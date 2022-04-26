@@ -1,0 +1,1 @@
+# Linux-Node-Clipboard-HTML-Formatter
