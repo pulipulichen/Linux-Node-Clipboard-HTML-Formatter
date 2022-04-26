@@ -1,0 +1,25 @@
+{
+  "name": "linux-node-clipboard-html-formatter",
+  "version": "1.0.0",
+  "description": "Format HTML from clipboard.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "format": "node index.js '/tmp/insert-temp.txt'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pulipulichen/Linux-Node-Clipboard-HTML-Formatter.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pulipulichen/Linux-Node-Clipboard-HTML-Formatter/issues"
+  },
+  "homepage": "https://github.com/pulipulichen/Linux-Node-Clipboard-HTML-Formatter#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "clipboardy": "^3.0.0",
+    "jquery": "^3.6.0"
+  }
+}
