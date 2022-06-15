@@ -21,14 +21,20 @@ $('[rel]').removeAttr('rel')
 $('[class]').removeAttr('class')
 $('[title]').removeAttr('title')
 $('[alt]').removeAttr('alt')
+$('[lang]').removeAttr('lang')
+$('[dir]').removeAttr('dir')
+$('[aria-level]').removeAttr('aria-level')
+$('[role]').removeAttr('role')
 
 $('span').filter(function () {
-  return this.innerText !== ''
-}).remove()
+  //console.log(this.innerText, $(this).text(), $(this).html())
+  //return (this.innerText === '' || !this.innerText)
 
+  return ($(this).text() === '')
+}).remove()
 $('*').each(function () {
   let ele = $(this)
-  console.log(ele.prop('tagName'))
+  
   if (!ele.prop('tagName')) {
     return false
   }
@@ -36,18 +42,31 @@ $('*').each(function () {
   if (ele.children().length === 1) {
     let child = ele.children().eq(0)
 
-    if (ele.prop('tagName') === child.prop('tagName') && 
-      ele.text() === child.text()) {
+    console.log(ele.prop('tagName'))
+    console.log((ele.text() === child.text()), ele.text(), child.text())
+    
+    if (ele.text() === child.text()) {
         ele.html(child.html())
     }
   }
 })
 
+let allowTagNames = [
+  'ul',
+  'ol'
+]
 while ($('body').children().length === 1) {
+  let child = $('body').children().eq(0)
+  let tagName = child.prop('tagName')
+  if (tagName) {
+    tagName = tagName.toLowerCase()
+  }
+  if (!tagName || allowTagNames.indexOf(tagName) > -1) {
+    break
+  }
   $('body').html($('body').children().eq(0).html())
 }
-
-fileContent = $('body').html().trim()
+fileContent = '<span>' + $('body').html().trim() + '</span>'
 
 //console.log(fileContent)
 
